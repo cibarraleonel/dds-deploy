@@ -11,6 +11,11 @@ RUN mvn clean package assembly:single -DskipTests
 #
 FROM openjdk:17-jdk-slim
 COPY --from=build /target/javalin-deploy-1.0-SNAPSHOT-jar-with-dependencies.jar libros.jar
+
+
+
 # ENV PORT=5432
-EXPOSE 5432
+EXPOSE 8080 
+
+
 CMD ["java","-classpath","libros.jar","ar.edu.dds.libros.AppLibros"]
